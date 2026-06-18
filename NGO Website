@@ -1,0 +1,2729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Help Rural-Urban Foundation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:        #1a6b3c;
+      --green-light:  #2e8b57;
+      --green-dark:   #0f4a28;
+      --gold:         #c8a22a;
+      --gold-light:   #e8c45a;
+      --white:        #ffffff;
+      --gray-light:   #f4f6f4;
+      --gray:         #dde3dd;
+      --text:         #2c2c2c;
+      --text-light:   #666666;
+      --sidebar-w:    210px;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--green-dark);
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .logo {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 1.1rem;
+      color: var(--green-dark);
+      flex-shrink: 0;
+      letter-spacing: 1px;
+      border: 2px solid var(--gold-light);
+    }
+
+    .header-text h1 {
+      font-family: 'Merriweather', serif;
+      font-size: 1.25rem;
+      color: var(--white);
+      line-height: 1.25;
+    }
+
+    .header-text p {
+      font-size: 0.75rem;
+      color: var(--gold-light);
+      margin-top: 3px;
+      letter-spacing: 0.6px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--green);
+      border-top: 3px solid var(--gold);
+      display: flex;
+      justify-content: center;
+    }
+
+    .nav-btn {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.85);
+      padding: 13px 48px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      position: relative;
+      transition: color 0.2s, background 0.2s;
+    }
+
+    .nav-btn:hover {
+      background: rgba(0,0,0,0.15);
+      color: var(--white);
+    }
+
+    .nav-btn.active {
+      color: var(--gold);
+      background: var(--green-dark);
+    }
+
+    .nav-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gold);
+    }
+
+    /* ── BODY LAYOUT ── */
+    .site-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* each "page" is a full 3-column row */
+    .page {
+      display: none;
+      flex: 1;
+    }
+
+    .page.active {
+      display: flex;
+    }
+
+    /* ── SIDEBARS ── */
+    .sidebar {
+      width: var(--sidebar-w);
+      flex-shrink: 0;
+      background: var(--gray-light);
+      border-right: 1px solid var(--gray);
+      padding: 28px 0 28px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar.right {
+      border-right: none;
+      border-left: 1px solid var(--gray);
+    }
+
+    .sidebar-header {
+      padding: 0 18px 10px;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      color: var(--text-light);
+      font-weight: 700;
+      border-bottom: 1px solid var(--gray);
+      margin-bottom: 8px;
+    }
+
+    .sub-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      border-left: 3px solid transparent;
+      padding: 13px 18px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--green);
+      cursor: pointer;
+      transition: background 0.18s, color 0.18s, border-color 0.18s;
+      line-height: 1.3;
+    }
+
+    .sub-btn::before {
+      content: '›';
+      font-size: 1.1rem;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .sub-btn:hover {
+      background: var(--gray);
+      color: var(--green-dark);
+    }
+
+    .sub-btn.active {
+      background: var(--white);
+      color: var(--green-dark);
+      font-weight: 700;
+      border-left-color: var(--gold);
+    }
+
+    .sidebar.right .sub-btn {
+      border-left: none;
+      border-right: 3px solid transparent;
+      text-align: right;
+      flex-direction: row-reverse;
+    }
+
+    .sidebar.right .sub-btn::before {
+      content: '‹';
+    }
+
+    .sidebar.right .sub-btn.active {
+      border-right-color: var(--gold);
+    }
+
+    /* ── MAIN CONTENT ── */
+    .main-col {
+      flex: 1;
+      padding: 40px 36px;
+      overflow-y: auto;
+    }
+
+    /* page sections inside main-col */
+    .section {
+      display: none;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* section typography */
+    .tag {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--green-dark);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 2px;
+      margin-bottom: 14px;
+    }
+
+    .section h2 {
+      font-family: 'Merriweather', serif;
+      font-size: 1.7rem;
+      color: var(--green-dark);
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+
+    .section .lead {
+      font-size: 0.97rem;
+      color: var(--text-light);
+      line-height: 1.7;
+      max-width: 580px;
+      margin-bottom: 30px;
+    }
+
+    /* placeholder block */
+    .placeholder {
+      background: var(--gray-light);
+      border: 2px dashed var(--gray);
+      border-radius: 8px;
+      padding: 48px 32px;
+      text-align: center;
+    }
+
+    .placeholder strong {
+      display: block;
+      font-size: 1rem;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .placeholder span {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      line-height: 1.8;
+    }
+
+    .placeholder .coming-badge {
+      display: inline-block;
+      margin-top: 16px;
+      background: var(--green);
+      color: var(--white);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 20px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--green-dark);
+      padding: 20px 28px;
+      text-align: center;
+    }
+
+    footer .reg-note {
+      font-style: italic;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 6px;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    footer .copy {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 60%, var(--green-light) 100%);
+      border-radius: 10px;
+      padding: 52px 44px;
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      background: rgba(200, 162, 42, 0.12);
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; left: 30%;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--green-dark);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 2px;
+      margin-bottom: 18px;
+    }
+
+    .hero h2 {
+      font-family: 'Merriweather', serif;
+      font-size: 2rem;
+      color: var(--white);
+      line-height: 1.3;
+      margin-bottom: 16px;
+      max-width: 520px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero p {
+      font-size: 0.97rem;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.75;
+      max-width: 500px;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--green-dark);
+      border: none;
+      padding: 12px 28px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.5);
+      padding: 12px 28px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,0.08);
+    }
+
+    /* ── MISSION BAND ── */
+    .mission-band {
+      background: var(--gray-light);
+      border-left: 4px solid var(--gold);
+      border-radius: 0 6px 6px 0;
+      padding: 22px 24px;
+      margin-bottom: 40px;
+    }
+
+    .mission-band .m-label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 1.3px;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .mission-band p {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.7;
+      font-style: italic;
+    }
+
+    /* ── STATS ── */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .stat-card {
+      background: var(--white);
+      border: 1px solid var(--gray);
+      border-top: 3px solid var(--green);
+      border-radius: 6px;
+      padding: 20px 16px;
+      text-align: center;
+    }
+
+    .stat-icon {
+      font-size: 1.6rem;
+      margin-bottom: 8px;
+    }
+
+    .stat-num {
+      font-family: 'Merriweather', serif;
+      font-size: 1.6rem;
+      color: var(--green-dark);
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      font-weight: 700;
+    }
+
+    /* ── SECTION HEADING ── */
+    .section-heading {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .section-heading h3 {
+      font-family: 'Merriweather', serif;
+      font-size: 1.2rem;
+      color: var(--green-dark);
+    }
+
+    .section-heading .line {
+      flex: 1;
+      height: 1px;
+      background: var(--gray);
+    }
+
+    /* ── PROJECT CARDS ── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .proj-card {
+      background: var(--white);
+      border: 1px solid var(--gray);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .proj-card:hover {
+      box-shadow: 0 4px 18px rgba(0,0,0,0.09);
+      transform: translateY(-2px);
+    }
+
+    .card-top {
+      height: 6px;
+      background: var(--green);
+    }
+
+    .card-top.gold { background: var(--gold); }
+    .card-top.teal { background: #1a8a6b; }
+    .card-top.amber { background: #c87a2a; }
+    .card-top.blue  { background: #2a6bc8; }
+
+    .card-body {
+      padding: 18px 16px;
+    }
+
+    .card-icon {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .card-title {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--green-dark);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .card-desc {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .card-status {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 3px 9px;
+      border-radius: 20px;
+      background: rgba(26, 107, 60, 0.1);
+      color: var(--green);
+    }
+
+    /* ── NEWSLETTER ── */
+    .newsletter {
+      background: linear-gradient(135deg, var(--green-dark), var(--green));
+      border-radius: 10px;
+      padding: 36px 32px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .newsletter-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .newsletter-text h3 {
+      font-family: 'Merriweather', serif;
+      font-size: 1.1rem;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .newsletter-text p {
+      font-size: 0.83rem;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.5;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      flex: 1;
+      min-width: 240px;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      min-width: 160px;
+      padding: 11px 14px;
+      border: none;
+      border-radius: 4px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.88rem;
+      outline: none;
+    }
+
+    .newsletter-form input:focus {
+      box-shadow: 0 0 0 2px var(--gold);
+    }
+
+    .newsletter-form button {
+      background: var(--gold);
+      color: var(--green-dark);
+      border: none;
+      padding: 11px 22px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+
+    .newsletter-form button:hover { background: var(--gold-light); }
+
+    /* ── HISTORY BAND ── */
+    .history-band {
+      display: flex;
+      gap: 18px;
+      background: var(--green-dark);
+      border-radius: 8px;
+      padding: 22px 24px;
+      margin-bottom: 28px;
+      align-items: flex-start;
+    }
+
+    .history-icon { font-size: 1.8rem; flex-shrink: 0; margin-top: 2px; }
+
+    .history-label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 1.3px;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .history-text p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.7;
+    }
+
+    .history-text strong { color: var(--gold-light); }
+
+    /* ── TEAM PHOTOS ── */
+    .team-photo-wrap {
+      width: 90px; height: 90px;
+      border-radius: 50%;
+      margin: 0 auto 12px;
+      overflow: hidden;
+      border: 3px solid var(--gray);
+      position: relative;
+    }
+
+    .team-photo {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .team-photo-placeholder {
+      width: 100%; height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--gray-light);
+      font-size: 2rem;
+    }
+
+    /* ── GALLERY ── */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .gal-item {
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--gray);
+      transition: box-shadow 0.2s;
+    }
+
+    .gal-item:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+
+    .gal-item.hidden { display: none; }
+
+    .gal-photo-placeholder {
+      height: 160px;
+      background: var(--gray-light);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .gal-photo-placeholder span { font-size: 1.8rem; }
+
+    .gal-photo-placeholder p {
+      font-size: 0.78rem;
+      color: var(--text-light);
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    .gal-photo-placeholder small {
+      font-size: 0.68rem;
+      color: #aaa;
+    }
+
+    .video-placeholder { background: #1a1a2e; }
+    .video-placeholder p, .video-placeholder small { color: rgba(255,255,255,0.6); }
+
+    .gal-photo-placeholder img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+
+    .gal-caption {
+      background: var(--white);
+      padding: 8px 12px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* ── ABOUT US ── */
+    .vm-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+
+    .vm-card {
+      background: var(--gray-light);
+      border: 1px solid var(--gray);
+      border-top: 3px solid var(--green);
+      border-radius: 8px;
+      padding: 22px 20px;
+    }
+
+    .vm-icon { font-size: 1.5rem; margin-bottom: 8px; }
+
+    .vm-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .vm-card p {
+      font-size: 0.88rem;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .values-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .value-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      background: var(--white);
+      border: 1px solid var(--gray);
+      border-radius: 6px;
+      padding: 14px 16px;
+    }
+
+    .value-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+
+    .value-item strong {
+      display: block;
+      font-size: 0.88rem;
+      color: var(--green-dark);
+      margin-bottom: 4px;
+    }
+
+    .value-item p {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+
+    .objectives-list {
+      padding-left: 20px;
+      margin-bottom: 28px;
+    }
+
+    .objectives-list li {
+      font-size: 0.87rem;
+      color: var(--text);
+      line-height: 1.65;
+      margin-bottom: 10px;
+      padding-left: 6px;
+    }
+
+    .reg-banner {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: rgba(200,162,42,0.1);
+      border: 1px solid rgba(200,162,42,0.35);
+      border-radius: 6px;
+      padding: 14px 16px;
+    }
+
+    .reg-banner span { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+
+    .reg-banner p {
+      font-size: 0.83rem;
+      color: var(--text);
+      line-height: 1.55;
+      font-style: italic;
+    }
+
+    /* ── PROGRAMMES ── */
+    .prog-list { display: flex; flex-direction: column; gap: 14px; }
+
+    .prog-item {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      background: var(--white);
+      border: 1px solid var(--gray);
+      border-radius: 8px;
+      padding: 18px 20px;
+      transition: box-shadow 0.2s;
+    }
+
+    .prog-item:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
+
+    .prog-icon-wrap {
+      width: 46px; height: 46px;
+      border-radius: 10px;
+      background: var(--green);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .prog-icon-wrap.teal  { background: #1a8a6b; }
+    .prog-icon-wrap.gold  { background: var(--gold); }
+    .prog-icon-wrap.amber { background: #c87a2a; }
+    .prog-icon-wrap.blue  { background: #2a6bc8; }
+
+    .prog-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--green-dark);
+      margin-bottom: 6px;
+    }
+
+    .prog-content p {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      line-height: 1.65;
+    }
+
+    /* ── LEADERSHIP TEAM ── */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .team-card {
+      background: var(--white);
+      border: 1px solid var(--gray);
+      border-radius: 8px;
+      padding: 24px 20px;
+      text-align: center;
+      transition: box-shadow 0.2s;
+    }
+
+    .team-card:hover { box-shadow: 0 3px 14px rgba(0,0,0,0.08); }
+
+    .team-avatar {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: var(--gray-light);
+      border: 2px solid var(--gray);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem;
+      margin: 0 auto 12px;
+    }
+
+    .team-name {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .team-role {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+      color: var(--green);
+      margin-bottom: 12px;
+    }
+
+    .team-bio {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    .team-email {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 0.75rem;
+      color: var(--green);
+      text-decoration: none;
+      word-break: break-all;
+    }
+
+    .team-email:hover { text-decoration: underline; }
+
+    /* ── GALLERY ── */
+    .gallery-empty {
+      background: var(--gray-light);
+      border: 2px dashed var(--gray);
+      border-radius: 10px;
+      padding: 56px 32px;
+      text-align: center;
+    }
+
+    .gallery-empty-icon { font-size: 3rem; margin-bottom: 16px; }
+
+    .gallery-empty h3 {
+      font-family: 'Merriweather', serif;
+      font-size: 1.2rem;
+      color: var(--green-dark);
+      margin-bottom: 10px;
+    }
+
+    .gallery-empty p {
+      font-size: 0.87rem;
+      color: var(--text-light);
+      max-width: 420px;
+      margin: 0 auto 20px;
+      line-height: 1.6;
+    }
+
+    .gallery-categories {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .gal-cat {
+      background: var(--white);
+      border: 1px solid var(--gray);
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: 0.75rem;
+      color: var(--text-light);
+      font-weight: 600;
+    }
+
+    /* ── VOLUNTEER PAGE ── */
+    .why-vol-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 8px;
+    }
+
+    .why-vol-card {
+      background: var(--gray-light);
+      border: 1px solid var(--gray);
+      border-radius: 8px;
+      padding: 18px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .why-icon { font-size: 1.6rem; }
+
+    .why-text strong {
+      display: block;
+      font-size: 0.88rem;
+      color: var(--green-dark);
+      margin-bottom: 4px;
+    }
+
+    .why-text p {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      line-height: 1.55;
+    }
+
+    .roles-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .role-tag {
+      background: rgba(26,107,60,0.08);
+      border: 1px solid rgba(26,107,60,0.2);
+      color: var(--green-dark);
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    /* Shared form styles */
+    .vol-form { display: flex; flex-direction: column; gap: 16px; }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      border: 1px solid var(--gray);
+      border-radius: 4px;
+      padding: 10px 12px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.88rem;
+      color: var(--text);
+      background: var(--white);
+      outline: none;
+      transition: border-color 0.18s, box-shadow 0.18s;
+      resize: vertical;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(26,107,60,0.1);
+    }
+
+    .form-submit {
+      background: var(--green);
+      color: var(--white);
+      border: none;
+      padding: 13px 32px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      border-radius: 4px;
+      cursor: pointer;
+      align-self: flex-start;
+      transition: background 0.2s;
+    }
+
+    .form-submit:hover { background: var(--green-dark); }
+
+    /* ── DONATE ── */
+    .donate-impact-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .donate-impact-card {
+      background: var(--white);
+      border: 1px solid var(--gray);
+      border-radius: 8px;
+      padding: 20px 16px;
+    }
+
+    .di-icon { font-size: 1.5rem; margin-bottom: 8px; }
+
+    .di-title {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--green-dark);
+      margin-bottom: 6px;
+    }
+
+    .donate-impact-card p {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    .donate-cta {
+      background: var(--gray-light);
+      border-radius: 8px;
+      padding: 20px 20px;
+      font-size: 0.88rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── CONTACT ── */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 28px;
+      align-items: flex-start;
+    }
+
+    .contact-sub-h {
+      font-family: 'Merriweather', serif;
+      font-size: 1rem;
+      color: var(--green-dark);
+      margin-bottom: 18px;
+    }
+
+    .contact-info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .ci-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .ci-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+
+    .ci-item strong {
+      display: block;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--text-light);
+      margin-bottom: 2px;
+    }
+
+    .ci-item p {
+      font-size: 0.88rem;
+      color: var(--text);
+    }
+
+    .social-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .social-btn {
+      width: 36px; height: 36px;
+      border-radius: 6px;
+      background: var(--gray-light);
+      border: 1px solid var(--gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      transition: background 0.18s;
+    }
+
+    .social-btn:hover { background: var(--gray); }
+
+    /* ── PROJECTS PAGE ── */
+    .section-h2 {
+      font-family: 'Merriweather', serif;
+      font-size: 1.7rem;
+      color: var(--green-dark);
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+
+    /* Filter tabs */
+    .filter-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .filter-btn {
+      background: var(--gray-light);
+      border: 1px solid var(--gray);
+      color: var(--text-light);
+      padding: 7px 16px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.18s;
+      letter-spacing: 0.4px;
+    }
+
+    .filter-btn:hover {
+      background: var(--gray);
+      color: var(--text);
+    }
+
+    .filter-btn.active {
+      background: var(--green);
+      border-color: var(--green);
+      color: var(--white);
+    }
+
+    /* Detailed project cards */
+    .proj-cards-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    .proj-card-detail {
+      display: flex;
+      background: var(--white);
+      border: 1px solid var(--gray);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: box-shadow 0.2s;
+    }
+
+    .proj-card-detail:hover {
+      box-shadow: 0 3px 16px rgba(0,0,0,0.08);
+    }
+
+    .proj-card-detail.hidden {
+      display: none;
+    }
+
+    .pcd-accent {
+      width: 5px;
+      flex-shrink: 0;
+      background: var(--green);
+    }
+
+    .pcd-accent.teal  { background: #1a8a6b; }
+    .pcd-accent.gold  { background: var(--gold); }
+    .pcd-accent.amber { background: #c87a2a; }
+    .pcd-accent.blue  { background: #2a6bc8; }
+
+    .pcd-body {
+      flex: 1;
+      padding: 20px 22px;
+    }
+
+    .pcd-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+
+    .pcd-icon {
+      font-size: 1.6rem;
+      line-height: 1;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .pcd-title {
+      font-weight: 700;
+      font-size: 0.97rem;
+      color: var(--green-dark);
+      line-height: 1.35;
+      margin-bottom: 3px;
+    }
+
+    .pcd-meta {
+      font-size: 0.72rem;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      font-weight: 700;
+    }
+
+    .pcd-desc {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+
+    .pcd-footer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .pcd-badge {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    .pcd-badge.proposed {
+      background: rgba(200,162,42,0.15);
+      color: #8a6a10;
+    }
+
+    .pcd-badge.active-proj {
+      background: rgba(26,107,60,0.12);
+      color: var(--green);
+    }
+
+    .pcd-ministry {
+      font-size: 0.72rem;
+      color: var(--text-light);
+      font-style: italic;
+    }
+
+    /* Ministry partner cards */
+    .ministry-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 8px;
+    }
+
+    .ministry-card {
+      background: var(--gray-light);
+      border: 1px solid var(--gray);
+      border-radius: 8px;
+      padding: 20px 16px;
+      text-align: center;
+    }
+
+    .ministry-icon {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .ministry-name {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 8px;
+      line-height: 1.35;
+    }
+
+    .ministry-desc {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* ── BLOG ── */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .blog-card {
+      background: var(--white);
+      border: 1px solid var(--gray);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .blog-card:hover {
+      box-shadow: 0 4px 18px rgba(0,0,0,0.09);
+      transform: translateY(-2px);
+    }
+
+    .blog-card.hidden { display: none; }
+
+    .blog-card-top {
+      height: 5px;
+    }
+
+    .blog-card-top.news        { background: var(--green); }
+    .blog-card-top.announcement { background: var(--gold); }
+
+    .blog-card-body {
+      padding: 18px 18px 20px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .blog-cat-badge {
+      font-size: 0.62rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 3px 9px;
+      border-radius: 20px;
+    }
+
+    .blog-cat-badge.news {
+      background: rgba(26,107,60,0.1);
+      color: var(--green);
+    }
+
+    .blog-cat-badge.announcement {
+      background: rgba(200,162,42,0.15);
+      color: #8a6a10;
+    }
+
+    .blog-date {
+      font-size: 0.72rem;
+      color: var(--text-light);
+    }
+
+    .blog-title {
+      font-family: 'Merriweather', serif;
+      font-size: 0.95rem;
+      color: var(--green-dark);
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+
+    .blog-excerpt {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      line-height: 1.65;
+      flex: 1;
+      margin-bottom: 16px;
+    }
+
+    .blog-read-btn {
+      background: none;
+      border: none;
+      color: var(--green);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 0;
+      text-align: left;
+      transition: color 0.18s;
+    }
+
+    .blog-read-btn:hover { color: var(--green-dark); }
+
+    /* Post modal overlay */
+    .post-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .post-overlay.open { display: flex; }
+
+    .post-modal {
+      background: var(--white);
+      border-radius: 10px;
+      max-width: 640px;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 36px 36px 32px;
+      position: relative;
+    }
+
+    .post-close {
+      position: absolute;
+      top: 14px; right: 16px;
+      background: none;
+      border: none;
+      font-size: 1.1rem;
+      color: var(--text-light);
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .post-close:hover { color: var(--text); }
+
+    .post-content ul {
+      padding-left: 20px;
+      margin: 12px 0;
+    }
+
+    .post-content ul li {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    .blog-add-note {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: var(--gray-light);
+      border: 1px dashed var(--gray);
+      border-radius: 6px;
+      padding: 14px 16px;
+      font-size: 0.82rem;
+      color: var(--text-light);
+    }
+
+    .blog-add-note span { font-size: 1rem; flex-shrink: 0; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 780px) {
+      .sidebar { display: none; }
+      .nav-btn { padding: 12px 22px; font-size: 0.82rem; }
+      .main-col { padding: 24px 18px; }
+      .header-text h1 { font-size: 1rem; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .hero { padding: 36px 24px; }
+      .hero h2 { font-size: 1.5rem; }
+      .newsletter { flex-direction: column; gap: 20px; }
+      .ministry-row { grid-template-columns: 1fr; }
+      .vm-row, .values-row, .team-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .why-vol-row { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .contact-layout { grid-template-columns: 1fr; }
+      .donate-impact-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">GH</div>
+    <div class="header-text">
+      <h1>Get Help Rural-Urban Foundation</h1>
+      <p>Empowering Communities &nbsp;·&nbsp; Building Futures &nbsp;·&nbsp; Lagos State, Nigeria</p>
+    </div>
+  </header>
+
+  <!-- MAIN NAVIGATION -->
+  <nav>
+    <button class="nav-btn active" id="nav-home"      onclick="showPage('home',      this)">Home</button>
+    <button class="nav-btn"        id="nav-projects"  onclick="showPage('projects',  this)">Projects</button>
+    <button class="nav-btn"        id="nav-volunteer" onclick="showPage('volunteer', this)">Volunteer</button>
+    <button class="nav-btn"        id="nav-blog"      onclick="showPage('blog',      this)">Blog</button>
+  </nav>
+
+  <div class="site-body">
+
+    <!-- ═══════════════════════════════════════════
+         HOME PAGE
+    ═══════════════════════════════════════════ -->
+    <div class="page active" id="page-home">
+
+      <!-- Left sidebar: About Us -->
+      <aside class="sidebar left">
+        <div class="sidebar-header">Sub-pages</div>
+        <button class="sub-btn" onclick="showSection('home', 'about', this)">About Us</button>
+        <button class="sub-btn" onclick="showSection('home', 'programmes', this)">Programmes</button>
+      </aside>
+
+      <!-- Centre: Home main + sub-page content -->
+      <div class="main-col">
+
+        <div class="section active" id="home-main">
+
+          <!-- HERO -->
+          <div class="hero">
+            <div class="hero-tag">Lagos State, Nigeria</div>
+            <h2>Building Stronger Rural and Urban Communities</h2>
+            <p>Get Help Rural-Urban Foundation improves the quality of life of vulnerable and underserved communities through employment support, skills acquisition, and sustainable empowerment — one community at a time.</p>
+            <div class="hero-btns">
+              <button class="btn-primary" onclick="showPage('volunteer', document.getElementById('nav-volunteer'))">Get Involved</button>
+              <button class="btn-outline" onclick="showSection('home', 'about', null)">Learn More</button>
+            </div>
+          </div>
+
+          <!-- MISSION -->
+          <div class="mission-band">
+            <div class="m-label">Our Mission</div>
+            <p>To improve the quality of life of vulnerable and underserved communities through employment support, skills acquisition, community development, environmental improvement, urban-rural integration, and sustainable empowerment initiatives in partnership with government, private organizations, and local communities.</p>
+          </div>
+
+          <!-- IMPACT STATS -->
+          <div class="section-heading">
+            <h3>Our Impact</h3>
+            <div class="line"></div>
+          </div>
+          <div class="stats-row">
+            <div class="stat-card">
+              <div class="stat-icon">👥</div>
+              <div class="stat-num">4</div>
+              <div class="stat-label">Founding Members</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">📋</div>
+              <div class="stat-num">5</div>
+              <div class="stat-label">Proposed Projects</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">🏘️</div>
+              <div class="stat-num">3</div>
+              <div class="stat-label">Target Ministries</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">🌱</div>
+              <div class="stat-num">∞</div>
+              <div class="stat-label">Impact Ahead</div>
+            </div>
+          </div>
+
+          <!-- PROJECT CARDS -->
+          <div class="section-heading">
+            <h3>Featured Projects</h3>
+            <div class="line"></div>
+          </div>
+          <div class="cards-grid">
+            <div class="proj-card">
+              <div class="card-top"></div>
+              <div class="card-body">
+                <div class="card-icon">💼</div>
+                <div class="card-title">Youth Skills &amp; Employment Training</div>
+                <div class="card-desc">Equipping young people with vocational skills and pathways to employment and entrepreneurship.</div>
+                <span class="card-status">Proposed</span>
+              </div>
+            </div>
+            <div class="proj-card">
+              <div class="card-top teal"></div>
+              <div class="card-body">
+                <div class="card-icon">🌿</div>
+                <div class="card-title">Community Clean-Up &amp; Beautification</div>
+                <div class="card-desc">Organizing sanitation and beautification drives to improve community environments.</div>
+                <span class="card-status">Proposed</span>
+              </div>
+            </div>
+            <div class="proj-card">
+              <div class="card-top gold"></div>
+              <div class="card-body">
+                <div class="card-icon">☀️</div>
+                <div class="card-title">Solar Awareness &amp; Energy Education</div>
+                <div class="card-desc">Promoting renewable energy awareness and community energy initiatives across Lagos.</div>
+                <span class="card-status">Proposed</span>
+              </div>
+            </div>
+            <div class="proj-card">
+              <div class="card-top amber"></div>
+              <div class="card-body">
+                <div class="card-icon">🏗️</div>
+                <div class="card-title">Rural-Urban Enterprise Development</div>
+                <div class="card-desc">Bridging the gap between rural and urban communities through enterprise support.</div>
+                <span class="card-status">Proposed</span>
+              </div>
+            </div>
+            <div class="proj-card">
+              <div class="card-top blue"></div>
+              <div class="card-body">
+                <div class="card-icon">🤝</div>
+                <div class="card-title">Small Business Mentorship Programme</div>
+                <div class="card-desc">Connecting aspiring entrepreneurs with mentors, training, and business development support.</div>
+                <span class="card-status">Proposed</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- NEWSLETTER -->
+          <div class="newsletter">
+            <div class="newsletter-text">
+              <h3>📧 Stay Updated</h3>
+              <p>Join our mailing list for updates on community projects, volunteer opportunities, and impact stories.</p>
+            </div>
+            <div class="newsletter-form">
+              <input type="email" placeholder="Your email address" />
+              <button type="button" onclick="handleSubscribe(this)">Subscribe</button>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="section" id="home-about">
+          <span class="tag">About Us</span>
+          <h2>Who We Are</h2>
+          <p class="lead">Get Help Rural-Urban Foundation is a community development and empowerment foundation established to improve the quality of life of vulnerable and underserved people across Lagos State — and beyond.</p>
+
+          <!-- Foundation History -->
+          <div class="history-band">
+            <div class="history-icon">📖</div>
+            <div class="history-text">
+              <div class="history-label">Our Story</div>
+              <p>Get Help Rural-Urban Foundation began in <strong>2020</strong> under the name <strong>LIGHTFORTHELESSPRIVILEGED</strong> — a grassroots effort to support the less privileged in underserved communities. Over the years, our work expanded in scope and ambition, leading us to rename the organisation to <strong>Get Help Rural-Urban Foundation</strong>, which better reflects our broader mission of rural-urban community development and empowerment.</p>
+              <p style="margin-top:10px;">We are currently in the process of formal CAC registration under our new name. Since our founding, we have delivered community support and outreach programmes across <strong>Cross River State</strong> and have extended our reach to <strong>Lagos State</strong>, where we are now actively building partnerships and establishing our presence.</p>
+            </div>
+          </div>
+
+          <!-- Vision & Mission -->
+          <div class="vm-row">
+            <div class="vm-card">
+              <div class="vm-icon">🔭</div>
+              <div class="vm-label">Our Vision</div>
+              <p>To become a leading community development foundation in Lagos State, promoting economic opportunity, sustainable communities, and inclusive growth for rural and urban residents alike.</p>
+            </div>
+            <div class="vm-card">
+              <div class="vm-icon">🎯</div>
+              <div class="vm-label">Our Mission</div>
+              <p>To improve the quality of life of vulnerable and underserved communities through employment support, skills acquisition, community development, environmental improvement, urban-rural integration, and sustainable empowerment initiatives.</p>
+            </div>
+          </div>
+
+          <!-- Core Values -->
+          <div class="section-heading" style="margin-top:36px;">
+            <h3>Core Values</h3>
+            <div class="line"></div>
+          </div>
+          <div class="values-row">
+            <div class="value-item"><span class="value-dot"></span><div><strong>Empowerment</strong><p>We believe every person has the potential to improve their circumstances with the right support.</p></div></div>
+            <div class="value-item"><span class="value-dot"></span><div><strong>Integrity</strong><p>We operate with transparency, accountability, and honesty in everything we do.</p></div></div>
+            <div class="value-item"><span class="value-dot"></span><div><strong>Community</strong><p>We put communities at the centre — working with people, not just for them.</p></div></div>
+            <div class="value-item"><span class="value-dot"></span><div><strong>Inclusion</strong><p>We serve everyone — youths, women, the elderly, and persons with special needs.</p></div></div>
+          </div>
+
+          <!-- Aims & Objectives -->
+          <div class="section-heading" style="margin-top:36px;">
+            <h3>Aims &amp; Objectives</h3>
+            <div class="line"></div>
+          </div>
+          <ol class="objectives-list">
+            <li>To promote the welfare, empowerment, and development of individuals and communities in both rural and urban areas.</li>
+            <li>To provide humanitarian assistance and support to vulnerable persons, including children, youths, women, the elderly, widows, and persons with special needs.</li>
+            <li>To encourage and facilitate skills acquisition, vocational training, entrepreneurship, and employment opportunities for youths and adults.</li>
+            <li>To support poverty alleviation initiatives through education, empowerment programmes, and sustainable community development projects.</li>
+            <li>To organise seminars, workshops, conferences, and training programmes aimed at personal, social, and economic development.</li>
+            <li>To promote access to quality education through scholarships, educational materials, mentoring, and other educational support services.</li>
+            <li>To encourage community participation in environmental sanitation, beautification, and sustainable development initiatives.</li>
+            <li>To collaborate with government agencies, local authorities, community leaders, private organisations, and international bodies in projects that improve the quality of life of the people.</li>
+            <li>To promote good health and well-being through health awareness campaigns, medical outreach programmes, and support services.</li>
+            <li>To encourage responsible citizenship, leadership development, community service, and social responsibility.</li>
+            <li>To support initiatives that promote renewable energy awareness, environmental conservation, and sustainable resource management.</li>
+            <li>To undertake projects and programmes that foster peaceful coexistence, social inclusion, and community harmony.</li>
+          </ol>
+
+          <div class="reg-banner">
+            <span>⚠️</span>
+            <p>Get Help Rural-Urban Foundation is currently undergoing formal CAC registration. Registration details will be published upon completion.</p>
+          </div>
+        </div>
+
+        <div class="section" id="home-programmes">
+          <span class="tag">Programmes</span>
+          <h2>Our Programmes</h2>
+          <p class="lead">Our programmes are designed to address the most pressing needs of vulnerable and underserved communities across Lagos State — creating lasting, meaningful change from the ground up.</p>
+
+          <div class="prog-list">
+            <div class="prog-item">
+              <div class="prog-icon-wrap green"><span>💼</span></div>
+              <div class="prog-content">
+                <div class="prog-title">Employment &amp; Skills Training</div>
+                <p>Vocational training, digital skills, and entrepreneurship programmes to equip youths and adults with practical tools for employment and self-reliance. Delivered through workshops, mentorship, and hands-on training sessions.</p>
+              </div>
+            </div>
+            <div class="prog-item">
+              <div class="prog-icon-wrap teal"><span>🏘️</span></div>
+              <div class="prog-content">
+                <div class="prog-title">Community Development</div>
+                <p>Support for community-led development projects — from infrastructure improvements to social cohesion initiatives. We work alongside community leaders, local authorities, and residents to drive change from within.</p>
+              </div>
+            </div>
+            <div class="prog-item">
+              <div class="prog-icon-wrap gold"><span>📚</span></div>
+              <div class="prog-content">
+                <div class="prog-title">Education Support</div>
+                <p>Scholarships, educational materials, mentoring, and back-to-school support for children and young people from disadvantaged backgrounds. We believe education is the foundation of lasting empowerment.</p>
+              </div>
+            </div>
+            <div class="prog-item">
+              <div class="prog-icon-wrap amber"><span>❤️</span></div>
+              <div class="prog-content">
+                <div class="prog-title">Health Outreach</div>
+                <p>Community health awareness campaigns, medical outreach events, and support services targeting underserved areas. We promote preventive healthcare and connect communities with health resources.</p>
+              </div>
+            </div>
+            <div class="prog-item">
+              <div class="prog-icon-wrap blue"><span>🌿</span></div>
+              <div class="prog-content">
+                <div class="prog-title">Environmental Projects</div>
+                <p>Community clean-up drives, tree planting, renewable energy awareness, and environmental education. We champion sustainable communities where people and their environment can thrive together.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.main-col -->
+
+      <!-- Right sidebar: Programmes -->
+      <aside class="sidebar right">
+        <div class="sidebar-header">Sub-pages</div>
+        <button class="sub-btn" onclick="showSection('home', 'about', this)">About Us</button>
+        <button class="sub-btn" onclick="showSection('home', 'programmes', this)">Programmes</button>
+      </aside>
+
+    </div><!-- /#page-home -->
+
+
+    <!-- ═══════════════════════════════════════════
+         PROJECTS PAGE
+    ═══════════════════════════════════════════ -->
+    <div class="page" id="page-projects">
+
+      <aside class="sidebar left">
+        <div class="sidebar-header">Sub-pages</div>
+        <button class="sub-btn" onclick="showSection('projects', 'leadership', this)">Leadership Team</button>
+        <button class="sub-btn" onclick="showSection('projects', 'gallery', this)">Gallery</button>
+      </aside>
+
+      <div class="main-col">
+
+        <div class="section active" id="projects-main">
+
+          <!-- PAGE HEADER -->
+          <div class="page-header">
+            <span class="tag">Projects</span>
+            <h2 class="section-h2">Our Projects</h2>
+            <p class="lead">We are building a foundation of community-driven projects across Lagos State — tackling youth unemployment, environmental challenges, energy awareness, and enterprise development.</p>
+          </div>
+
+          <!-- PROJECT STATS -->
+          <div class="stats-row">
+            <div class="stat-card">
+              <div class="stat-icon">📁</div>
+              <div class="stat-num">5</div>
+              <div class="stat-label">Proposed Projects</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">🏛️</div>
+              <div class="stat-num">3</div>
+              <div class="stat-label">Target Ministries</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">🎯</div>
+              <div class="stat-num">Lagos</div>
+              <div class="stat-label">State Focus</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">🚀</div>
+              <div class="stat-num">2025</div>
+              <div class="stat-label">Launch Year</div>
+            </div>
+          </div>
+
+          <!-- FILTER TABS -->
+          <div class="filter-tabs">
+            <button class="filter-btn active" onclick="filterCards('all', this)">All Projects</button>
+            <button class="filter-btn" onclick="filterCards('employment', this)">Employment</button>
+            <button class="filter-btn" onclick="filterCards('environment', this)">Environment</button>
+            <button class="filter-btn" onclick="filterCards('enterprise', this)">Enterprise</button>
+            <button class="filter-btn" onclick="filterCards('energy', this)">Energy</button>
+          </div>
+
+          <!-- PROJECT CARDS — DETAILED -->
+          <div class="proj-cards-detail" id="proj-cards-detail">
+
+            <div class="proj-card-detail" data-cat="employment">
+              <div class="pcd-accent green"></div>
+              <div class="pcd-body">
+                <div class="pcd-top">
+                  <span class="pcd-icon">💼</span>
+                  <div>
+                    <div class="pcd-title">Youth Skills &amp; Employment Training Programme</div>
+                    <div class="pcd-meta">Employment &nbsp;·&nbsp; Youth &amp; Adults</div>
+                  </div>
+                </div>
+                <p class="pcd-desc">A structured vocational training and skills acquisition programme targeting unemployed youths and adults across Lagos State. Participants will gain practical skills in digital literacy, trades, and entrepreneurship — creating direct pathways to employment and self-reliance.</p>
+                <div class="pcd-footer">
+                  <span class="pcd-badge proposed">Proposed</span>
+                  <span class="pcd-ministry">Target: Min. of Wealth Creation &amp; Employment</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="proj-card-detail" data-cat="environment">
+              <div class="pcd-accent teal"></div>
+              <div class="pcd-body">
+                <div class="pcd-top">
+                  <span class="pcd-icon">🌿</span>
+                  <div>
+                    <div class="pcd-title">Community Clean-Up &amp; Beautification Initiative</div>
+                    <div class="pcd-meta">Environment &nbsp;·&nbsp; Communities</div>
+                  </div>
+                </div>
+                <p class="pcd-desc">Organised community sanitation drives and beautification projects to improve the living environment of underserved areas. Activities include waste management, tree planting, drainage clearing, and public space improvement — in collaboration with local authorities and community leaders.</p>
+                <div class="pcd-footer">
+                  <span class="pcd-badge proposed">Proposed</span>
+                  <span class="pcd-ministry">Target: Min. of Physical Planning &amp; Urban Development</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="proj-card-detail" data-cat="energy">
+              <div class="pcd-accent gold"></div>
+              <div class="pcd-body">
+                <div class="pcd-top">
+                  <span class="pcd-icon">☀️</span>
+                  <div>
+                    <div class="pcd-title">Solar Awareness &amp; Energy Education Campaign</div>
+                    <div class="pcd-meta">Energy &nbsp;·&nbsp; Awareness</div>
+                  </div>
+                </div>
+                <p class="pcd-desc">A community-level campaign to promote renewable energy awareness and practical knowledge of solar solutions. Workshops, demonstrations, and educational materials will help residents and community groups understand low-cost energy options and sustainability practices.</p>
+                <div class="pcd-footer">
+                  <span class="pcd-badge proposed">Proposed</span>
+                  <span class="pcd-ministry">Target: Min. of Energy &amp; Mineral Resources</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="proj-card-detail" data-cat="enterprise">
+              <div class="pcd-accent amber"></div>
+              <div class="pcd-body">
+                <div class="pcd-top">
+                  <span class="pcd-icon">🏗️</span>
+                  <div>
+                    <div class="pcd-title">Rural-Urban Enterprise Development Project</div>
+                    <div class="pcd-meta">Enterprise &nbsp;·&nbsp; Rural &amp; Urban</div>
+                  </div>
+                </div>
+                <p class="pcd-desc">A programme connecting rural producers and entrepreneurs with urban markets, networks, and development resources. The project will support micro-businesses, cooperatives, and informal traders through training, linkages, and development support to reduce the rural-urban economic divide.</p>
+                <div class="pcd-footer">
+                  <span class="pcd-badge proposed">Proposed</span>
+                  <span class="pcd-ministry">Target: Min. of Wealth Creation &amp; Employment</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="proj-card-detail" data-cat="enterprise">
+              <div class="pcd-accent blue"></div>
+              <div class="pcd-body">
+                <div class="pcd-top">
+                  <span class="pcd-icon">🤝</span>
+                  <div>
+                    <div class="pcd-title">Small Business Mentorship Programme</div>
+                    <div class="pcd-meta">Enterprise &nbsp;·&nbsp; Entrepreneurs</div>
+                  </div>
+                </div>
+                <p class="pcd-desc">Pairing aspiring entrepreneurs and small business owners with experienced mentors for structured guidance, accountability, and business development support. The programme will cover business planning, financial management, marketing, and access to opportunities — helping participants build viable, sustainable businesses.</p>
+                <div class="pcd-footer">
+                  <span class="pcd-badge proposed">Proposed</span>
+                  <span class="pcd-ministry">Target: Min. of Wealth Creation &amp; Employment</span>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /.proj-cards-detail -->
+
+          <!-- TARGET MINISTRIES -->
+          <div class="section-heading" style="margin-top:40px;">
+            <h3>Ministries We Are Engaging</h3>
+            <div class="line"></div>
+          </div>
+          <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:16px;font-style:italic;">We are currently seeking recognition and partnership approval from the following Lagos State ministries. Formal partnerships will be confirmed upon approval.</p>
+          <div class="ministry-row">
+            <div class="ministry-card">
+              <div class="ministry-icon">🏛️</div>
+              <div class="ministry-name">Ministry of Wealth Creation &amp; Employment</div>
+              <div class="ministry-desc">We are engaging this ministry around youth employment, skills training, and enterprise development programmes.</div>
+            </div>
+            <div class="ministry-card">
+              <div class="ministry-icon">🏙️</div>
+              <div class="ministry-name">Ministry of Physical Planning &amp; Urban Development</div>
+              <div class="ministry-desc">We are engaging this ministry around community regeneration, beautification, and inclusive urban planning.</div>
+            </div>
+            <div class="ministry-card">
+              <div class="ministry-icon">⚡</div>
+              <div class="ministry-name">Ministry of Energy &amp; Mineral Resources</div>
+              <div class="ministry-desc">We are engaging this ministry around renewable energy awareness and community energy education.</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="section" id="projects-leadership">
+          <span class="tag">Leadership Team</span>
+          <h2>Meet Our Team</h2>
+          <p class="lead">Get Help Rural-Urban Foundation is guided by a founding team committed to community development, transparency, and lasting impact across Lagos State.</p>
+
+          <div class="team-grid">
+
+            <div class="team-card">
+              <div class="team-photo-wrap">
+                <img class="team-photo" src="chairman.jpg" alt="Joel Olasehinde Olanipekun" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+                <div class="team-photo-placeholder">👤</div>
+              </div>
+              <div class="team-name">Joel Olasehinde Olanipekun</div>
+              <div class="team-role">Chairman</div>
+              <p class="team-bio">A reliable, energetic, and resourceful professional with over 19 years' administrative experience and 12 years as a Support Worker in a residential mental health home. An experienced social media content writer and community development advocate with a strong background in business development, counselling, and health &amp; social care. Holds qualifications including a Counselling Skills Diploma (NCFE Level 3), Cyber Security Diploma, Level 3 NVQ Health and Social Care (City &amp; Guilds), and a Certificate in Designing a Multidimensional Poverty Index (UNDP / University of Oxford).</p>
+            </div>
+
+            <div class="team-card">
+              <div class="team-photo-wrap">
+                <img class="team-photo" src="secretary.jpg" alt="Augustine Otuokwa Ogar" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+                <div class="team-photo-placeholder">👤</div>
+              </div>
+              <div class="team-name">Augustine Otuokwa Ogar</div>
+              <div class="team-role">Secretary</div>
+              <p class="team-bio">A dedicated professional with a strong background in electronic engineering and renewable energy. Research Associate at the National Centre for Hydropower Research and Development, Nigeria, and a Fellow of i-Fair (Israel–Nigeria), reflecting his commitment to international collaboration. Holds a BSc in Electronic and Computer Technology and contributes his expertise to Bowen University, Iwo, Osun State. His skills span renewable energy technologies, electronic maintenance, and fabrication.</p>
+              <a class="team-email" href="mailto:augustine.ogar@bowen.edu.ng">augustine.ogar@bowen.edu.ng</a>
+            </div>
+
+            <div class="team-card">
+              <div class="team-photo-wrap">
+                <img class="team-photo" src="treasurer.jpg" alt="Treasurer" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+                <div class="team-photo-placeholder">👤</div>
+              </div>
+              <div class="team-name">[Name — to be added]</div>
+              <div class="team-role">Treasurer</div>
+              <p class="team-bio">[Bio — to be added]</p>
+            </div>
+
+            <div class="team-card">
+              <div class="team-photo-wrap">
+                <img class="team-photo" src="member.jpg" alt="Member" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+                <div class="team-photo-placeholder">👤</div>
+              </div>
+              <div class="team-name">[Name — to be added]</div>
+              <div class="team-role">Member / Trustee</div>
+              <p class="team-bio">[Note about this person — to be added]</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="section" id="projects-gallery">
+          <span class="tag">Gallery</span>
+          <h2>Photo Gallery</h2>
+          <p class="lead">As we begin our work in communities across Lagos State, this gallery will grow to document our projects, events, and the people we serve.</p>
+
+          <!-- Gallery Filter -->
+          <div class="filter-tabs" style="margin-bottom:20px;">
+            <button class="filter-btn active" onclick="filterGallery('all', this)">All</button>
+            <button class="filter-btn" onclick="filterGallery('events', this)">Events</button>
+            <button class="filter-btn" onclick="filterGallery('outreach', this)">Outreach</button>
+            <button class="filter-btn" onclick="filterGallery('training', this)">Training</button>
+            <button class="filter-btn" onclick="filterGallery('video', this)">Videos</button>
+          </div>
+
+          <!-- Photo & Video Grid -->
+          <div class="gallery-grid" id="gallery-grid">
+
+            <!-- PHOTO SLOTS — share your photos and I will embed them here -->
+            <!-- Each item: data-cat = events / outreach / training / video -->
+
+            <div class="gal-item" data-cat="events">
+              <div class="gal-photo-placeholder"><span>📷</span><p>Event Photo<br><small>[To be added]</small></p></div>
+              <div class="gal-caption">Community Event</div>
+            </div>
+
+            <div class="gal-item" data-cat="outreach">
+              <div class="gal-photo-placeholder"><span>📷</span><p>Outreach Photo<br><small>[To be added]</small></p></div>
+              <div class="gal-caption">Community Outreach</div>
+            </div>
+
+            <div class="gal-item" data-cat="training">
+              <div class="gal-photo-placeholder"><span>📷</span><p>Training Photo<br><small>[To be added]</small></p></div>
+              <div class="gal-caption">Skills Training Session</div>
+            </div>
+
+            <div class="gal-item" data-cat="events">
+              <div class="gal-photo-placeholder"><span>📷</span><p>Event Photo<br><small>[To be added]</small></p></div>
+              <div class="gal-caption">Community Event</div>
+            </div>
+
+            <div class="gal-item" data-cat="outreach">
+              <div class="gal-photo-placeholder"><span>📷</span><p>Outreach Photo<br><small>[To be added]</small></p></div>
+              <div class="gal-caption">Outreach Activity</div>
+            </div>
+
+            <div class="gal-item" data-cat="training">
+              <div class="gal-photo-placeholder"><span>📷</span><p>Training Photo<br><small>[To be added]</small></p></div>
+              <div class="gal-caption">Training Session</div>
+            </div>
+
+            <!-- VIDEO SLOT — paste a YouTube link and I'll embed it -->
+            <div class="gal-item gal-video" data-cat="video">
+              <div class="gal-photo-placeholder video-placeholder"><span>▶️</span><p>Event Video<br><small>[Paste YouTube link to add]</small></p></div>
+              <div class="gal-caption">Event Video</div>
+            </div>
+
+            <div class="gal-item gal-video" data-cat="video">
+              <div class="gal-photo-placeholder video-placeholder"><span>▶️</span><p>Event Video<br><small>[Paste YouTube link to add]</small></p></div>
+              <div class="gal-caption">Event Video</div>
+            </div>
+
+          </div>
+
+          <p style="font-size:0.8rem;color:var(--text-light);margin-top:16px;font-style:italic;">📌 Share your event photos and videos with me and I will add them to this gallery.</p>
+        </div>
+
+      </div>
+
+      <aside class="sidebar right">
+        <div class="sidebar-header">Sub-pages</div>
+        <button class="sub-btn" onclick="showSection('projects', 'leadership', this)">Leadership Team</button>
+        <button class="sub-btn" onclick="showSection('projects', 'gallery', this)">Gallery</button>
+      </aside>
+
+    </div><!-- /#page-projects -->
+
+
+    <!-- ═══════════════════════════════════════════
+         VOLUNTEER PAGE
+    ═══════════════════════════════════════════ -->
+    <div class="page" id="page-volunteer">
+
+      <aside class="sidebar left">
+        <div class="sidebar-header">Sub-pages</div>
+        <button class="sub-btn" onclick="showSection('volunteer', 'donate', this)">Donate</button>
+        <button class="sub-btn" onclick="showSection('volunteer', 'contact', this)">Contact</button>
+      </aside>
+
+      <div class="main-col">
+
+        <div class="section active" id="volunteer-main">
+          <span class="tag">Volunteer</span>
+          <h2>Join Our Cause</h2>
+          <p class="lead">Make a real difference in your community. Join Get Help Rural-Urban Foundation as a volunteer and help us deliver employment support, skills training, and community development across Lagos State.</p>
+
+          <!-- Why Volunteer -->
+          <div class="why-vol-row">
+            <div class="why-vol-card"><div class="why-icon">🌍</div><div class="why-text"><strong>Create Real Impact</strong><p>Your time and skills directly improve the lives of vulnerable people in your community.</p></div></div>
+            <div class="why-vol-card"><div class="why-icon">📈</div><div class="why-text"><strong>Grow Your Skills</strong><p>Gain hands-on experience in community development, project management, and outreach.</p></div></div>
+            <div class="why-vol-card"><div class="why-icon">🤝</div><div class="why-text"><strong>Build Connections</strong><p>Join a network of passionate people committed to sustainable community development.</p></div></div>
+          </div>
+
+          <!-- Volunteer Roles -->
+          <div class="section-heading" style="margin-top:32px;">
+            <h3>Volunteer Opportunities</h3>
+            <div class="line"></div>
+          </div>
+          <div class="roles-row">
+            <div class="role-tag">Community Outreach</div>
+            <div class="role-tag">Skills Trainer / Facilitator</div>
+            <div class="role-tag">Admin &amp; Coordination</div>
+            <div class="role-tag">Photography &amp; Documentation</div>
+            <div class="role-tag">Social Media &amp; Communications</div>
+            <div class="role-tag">Youth Mentorship</div>
+            <div class="role-tag">Environmental Projects</div>
+            <div class="role-tag">Health Awareness</div>
+          </div>
+
+          <!-- Volunteer Form -->
+          <div class="section-heading" style="margin-top:32px;">
+            <h3>Apply to Volunteer</h3>
+            <div class="line"></div>
+          </div>
+          <form class="vol-form" onsubmit="handleVolForm(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Full Name *</label>
+                <input type="text" placeholder="Your full name" required />
+              </div>
+              <div class="form-group">
+                <label>Email Address *</label>
+                <input type="email" placeholder="your@email.com" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" placeholder="+234 ..." />
+              </div>
+              <div class="form-group">
+                <label>Area of Interest *</label>
+                <select required>
+                  <option value="">— Select an area —</option>
+                  <option>Community Outreach</option>
+                  <option>Skills Training / Facilitation</option>
+                  <option>Admin &amp; Coordination</option>
+                  <option>Photography &amp; Documentation</option>
+                  <option>Social Media &amp; Communications</option>
+                  <option>Youth Mentorship</option>
+                  <option>Environmental Projects</option>
+                  <option>Health Awareness</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Why do you want to volunteer? *</label>
+              <textarea rows="4" placeholder="Tell us a little about yourself and why you'd like to join Get Help Rural-Urban Foundation..." required></textarea>
+            </div>
+            <button type="submit" class="form-submit">Submit Application</button>
+          </form>
+        </div>
+
+        <div class="section" id="volunteer-donate">
+          <span class="tag">Donate</span>
+          <h2>Support Our Work</h2>
+          <p class="lead">Your contribution — no matter the size — helps us reach more communities, train more young people, and change more lives across Lagos State.</p>
+
+          <div class="reg-banner" style="margin-bottom:28px;">
+            <span>ℹ️</span>
+            <p>Our official bank account details will be published here once our CAC registration is complete. We appreciate your patience and support.</p>
+          </div>
+
+          <!-- What donations fund -->
+          <div class="section-heading">
+            <h3>What Your Donation Funds</h3>
+            <div class="line"></div>
+          </div>
+          <div class="donate-impact-row">
+            <div class="donate-impact-card">
+              <div class="di-icon">🎓</div>
+              <div class="di-title">Skills Training</div>
+              <p>Funds vocational workshops, training materials, and facilitators for youth and adult programmes.</p>
+            </div>
+            <div class="donate-impact-card">
+              <div class="di-icon">🏘️</div>
+              <div class="di-title">Community Projects</div>
+              <p>Supports clean-up drives, community improvement works, and environmental initiatives.</p>
+            </div>
+            <div class="donate-impact-card">
+              <div class="di-icon">📚</div>
+              <div class="di-title">Education Support</div>
+              <p>Provides scholarships, school supplies, and mentoring for children from disadvantaged homes.</p>
+            </div>
+            <div class="donate-impact-card">
+              <div class="di-icon">❤️</div>
+              <div class="di-title">Health Outreach</div>
+              <p>Enables health awareness campaigns and medical outreach in underserved communities.</p>
+            </div>
+          </div>
+
+          <div class="donate-cta">
+            <p>Interested in supporting us before our bank details go live? Reach out directly — we'll be happy to discuss how you can help.</p>
+            <p style="margin-top:8px;">📧 <a href="mailto:support.ru.ngo@gmail.com" style="color:var(--green);font-weight:700;">support.ru.ngo@gmail.com</a></p>
+            <button class="btn-primary" onclick="showSection('volunteer', 'contact', null)" style="margin-top:14px;">Contact Us</button>
+          </div>
+        </div>
+
+        <div class="section" id="volunteer-contact">
+          <span class="tag">Contact</span>
+          <h2>Get in Touch</h2>
+          <p class="lead">We'd love to hear from you — whether you have questions, want to volunteer, explore a partnership, or simply learn more about our work in Lagos State.</p>
+
+          <div class="contact-layout">
+            <!-- Contact Form -->
+            <div class="contact-form-wrap">
+              <h3 class="contact-sub-h">Send Us a Message</h3>
+              <form class="vol-form" onsubmit="handleContactForm(event)">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Full Name *</label>
+                    <input type="text" placeholder="Your full name" required />
+                  </div>
+                  <div class="form-group">
+                    <label>Email Address *</label>
+                    <input type="email" placeholder="your@email.com" required />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Subject *</label>
+                  <input type="text" placeholder="What is your message about?" required />
+                </div>
+                <div class="form-group">
+                  <label>Message *</label>
+                  <textarea rows="5" placeholder="Write your message here..." required></textarea>
+                </div>
+                <button type="submit" class="form-submit">Send Message</button>
+              </form>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="contact-info-wrap">
+              <h3 class="contact-sub-h">Contact Information</h3>
+              <div class="contact-info-list">
+                <div class="ci-item">
+                  <span class="ci-icon">📍</span>
+                  <div>
+                    <strong>Location</strong>
+                    <p>Lagos State, Nigeria</p>
+                  </div>
+                </div>
+                <div class="ci-item">
+                  <span class="ci-icon">📧</span>
+                  <div>
+                    <strong>Email</strong>
+                    <p><a href="mailto:support.ru.ngo@gmail.com" style="color:var(--green);text-decoration:none;">support.ru.ngo@gmail.com</a></p>
+                  </div>
+                </div>
+                <div class="ci-item">
+                  <span class="ci-icon">📞</span>
+                  <div>
+                    <strong>Phone</strong>
+                    <p>[Phone number to be added]</p>
+                  </div>
+                </div>
+              </div>
+
+              <div style="margin-top:24px;">
+                <strong style="font-size:0.82rem;color:var(--text-light);text-transform:uppercase;letter-spacing:0.8px;">Follow Us</strong>
+                <div class="social-row">
+                  <a class="social-btn" href="#" title="Facebook">f</a>
+                  <a class="social-btn" href="#" title="Twitter / X">𝕏</a>
+                  <a class="social-btn" href="#" title="Instagram">📷</a>
+                  <a class="social-btn" href="#" title="WhatsApp">💬</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <aside class="sidebar right">
+        <div class="sidebar-header">Sub-pages</div>
+        <button class="sub-btn" onclick="showSection('volunteer', 'donate', this)">Donate</button>
+        <button class="sub-btn" onclick="showSection('volunteer', 'contact', this)">Contact</button>
+      </aside>
+
+    </div><!-- /#page-volunteer -->
+
+    <!-- ═══════════════════════════════════════════
+         BLOG PAGE
+    ═══════════════════════════════════════════ -->
+    <div class="page" id="page-blog">
+
+      <aside class="sidebar left">
+        <div class="sidebar-header">Sub-pages</div>
+        <button class="sub-btn" onclick="showSection('blog', 'latest', this)">Latest News</button>
+        <button class="sub-btn" onclick="showSection('blog', 'announcements', this)">Announcements</button>
+      </aside>
+
+      <div class="main-col">
+
+        <!-- BLOG MAIN -->
+        <div class="section active" id="blog-main">
+          <span class="tag">Blog</span>
+          <h2 class="section-h2">News &amp; Updates</h2>
+          <p class="lead">Stay up to date with the latest news, announcements, and stories from Get Help Rural-Urban Foundation and the communities we serve.</p>
+
+          <!-- Blog filter -->
+          <div class="filter-tabs">
+            <button class="filter-btn active" onclick="filterPosts('all', this)">All</button>
+            <button class="filter-btn" onclick="filterPosts('news', this)">News</button>
+            <button class="filter-btn" onclick="filterPosts('announcement', this)">Announcements</button>
+          </div>
+
+          <!-- Post cards -->
+          <div class="blog-grid" id="blog-grid">
+
+            <div class="blog-card" data-cat="announcement">
+              <div class="blog-card-top announcement"></div>
+              <div class="blog-card-body">
+                <div class="blog-meta">
+                  <span class="blog-cat-badge announcement">Announcement</span>
+                  <span class="blog-date">June 2025</span>
+                </div>
+                <h3 class="blog-title">Get Help Rural-Urban Foundation Launches Website</h3>
+                <p class="blog-excerpt">We are excited to announce the launch of our official website — a major step in building our online presence and connecting with communities, volunteers, and supporters across Nigeria and beyond.</p>
+                <button class="blog-read-btn" onclick="openPost('post-launch')">Read More →</button>
+              </div>
+            </div>
+
+            <div class="blog-card" data-cat="news">
+              <div class="blog-card-top news"></div>
+              <div class="blog-card-body">
+                <div class="blog-meta">
+                  <span class="blog-cat-badge news">News</span>
+                  <span class="blog-date">2025</span>
+                </div>
+                <h3 class="blog-title">CAC Registration in Progress</h3>
+                <p class="blog-excerpt">Get Help Rural-Urban Foundation — formerly known as LIGHTFORTHELESSPRIVILEGED — is currently undergoing formal CAC Incorporated Trustee registration. This marks a key milestone in our journey toward full legal recognition.</p>
+                <button class="blog-read-btn" onclick="openPost('post-cac')">Read More →</button>
+              </div>
+            </div>
+
+            <div class="blog-card" data-cat="news">
+              <div class="blog-card-top news"></div>
+              <div class="blog-card-body">
+                <div class="blog-meta">
+                  <span class="blog-cat-badge news">News</span>
+                  <span class="blog-date">2020 – Present</span>
+                </div>
+                <h3 class="blog-title">Our Journey: From Cross River State to Lagos</h3>
+                <p class="blog-excerpt">Since 2020, our foundation has delivered community support and outreach across Cross River State, and has now extended its reach to Lagos State — where we are actively building partnerships and establishing our presence.</p>
+                <button class="blog-read-btn" onclick="openPost('post-journey')">Read More →</button>
+              </div>
+            </div>
+
+          </div><!-- /.blog-grid -->
+
+          <!-- Full post overlay -->
+          <div class="post-overlay" id="post-overlay" onclick="closePost(event)">
+            <div class="post-modal">
+              <button class="post-close" onclick="closePost()">✕</button>
+              <div class="post-content" id="post-content"></div>
+            </div>
+          </div>
+
+          <!-- Add post note -->
+          <div class="blog-add-note">
+            <span>✏️</span>
+            <p>To add a new blog post, share the title, date, category, and content with me and I'll publish it here.</p>
+          </div>
+        </div>
+
+        <!-- LATEST NEWS sub-page -->
+        <div class="section" id="blog-latest">
+          <span class="tag">Latest News</span>
+          <h2 class="section-h2">Latest News</h2>
+          <p class="lead">The most recent news from Get Help Rural-Urban Foundation.</p>
+          <div class="blog-grid">
+            <div class="blog-card" data-cat="news">
+              <div class="blog-card-top news"></div>
+              <div class="blog-card-body">
+                <div class="blog-meta"><span class="blog-cat-badge news">News</span><span class="blog-date">2025</span></div>
+                <h3 class="blog-title">CAC Registration in Progress</h3>
+                <p class="blog-excerpt">Our formal CAC Incorporated Trustee registration is underway — a key milestone in our journey toward full legal recognition.</p>
+                <button class="blog-read-btn" onclick="openPost('post-cac')">Read More →</button>
+              </div>
+            </div>
+            <div class="blog-card" data-cat="news">
+              <div class="blog-card-top news"></div>
+              <div class="blog-card-body">
+                <div class="blog-meta"><span class="blog-cat-badge news">News</span><span class="blog-date">2020 – Present</span></div>
+                <h3 class="blog-title">Our Journey: From Cross River State to Lagos</h3>
+                <p class="blog-excerpt">Since 2020, we have served communities in Cross River State and now extended our reach to Lagos State.</p>
+                <button class="blog-read-btn" onclick="openPost('post-journey')">Read More →</button>
+              </div>
+            </div>
+          </div>
+          <div class="post-overlay" id="post-overlay-latest" onclick="closePost(event)">
+            <div class="post-modal"><button class="post-close" onclick="closePost()">✕</button><div class="post-content" id="post-content-latest"></div></div>
+          </div>
+        </div>
+
+        <!-- ANNOUNCEMENTS sub-page -->
+        <div class="section" id="blog-announcements">
+          <span class="tag">Announcements</span>
+          <h2 class="section-h2">Announcements</h2>
+          <p class="lead">Official announcements from Get Help Rural-Urban Foundation.</p>
+          <div class="blog-grid">
+            <div class="blog-card" data-cat="announcement">
+              <div class="blog-card-top announcement"></div>
+              <div class="blog-card-body">
+                <div class="blog-meta"><span class="blog-cat-badge announcement">Announcement</span><span class="blog-date">June 2025</span></div>
+                <h3 class="blog-title">Get Help Rural-Urban Foundation Launches Website</h3>
+                <p class="blog-excerpt">We are excited to announce the launch of our official website — a major step in building our online presence and connecting with communities across Nigeria.</p>
+                <button class="blog-read-btn" onclick="openPost('post-launch')">Read More →</button>
+              </div>
+            </div>
+          </div>
+          <div class="post-overlay" id="post-overlay-ann" onclick="closePost(event)">
+            <div class="post-modal"><button class="post-close" onclick="closePost()">✕</button><div class="post-content" id="post-content-ann"></div></div>
+          </div>
+        </div>
+
+      </div><!-- /.main-col -->
+
+      <aside class="sidebar right">
+        <div class="sidebar-header">Sub-pages</div>
+        <button class="sub-btn" onclick="showSection('blog', 'latest', this)">Latest News</button>
+        <button class="sub-btn" onclick="showSection('blog', 'announcements', this)">Announcements</button>
+      </aside>
+
+    </div><!-- /#page-blog -->
+
+  </div><!-- /.site-body -->
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="reg-note">Get Help Rural-Urban Foundation is currently undergoing formal registration. Registration details will be published upon completion.</p>
+    <p class="copy">&copy; 2025 Get Help Rural-Urban Foundation &nbsp;·&nbsp; Lagos State, Nigeria</p>
+  </footer>
+
+  <script>
+    // Switch main page
+    function showPage(page, btn) {
+      // Hide all pages, deactivate all nav buttons
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+
+      // Show selected page & activate button
+      document.getElementById('page-' + page).classList.add('active');
+      btn.classList.add('active');
+
+      // Reset to main section
+      resetToMain(page);
+    }
+
+    // Reset a page back to its main section
+    function resetToMain(page) {
+      const pageEl = document.getElementById('page-' + page);
+      pageEl.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      pageEl.querySelectorAll('.sub-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(page + '-main').classList.add('active');
+    }
+
+    // Blog post data
+    const posts = {
+      'post-launch': {
+        title: 'Get Help Rural-Urban Foundation Launches Website',
+        date: 'June 2025',
+        category: 'Announcement',
+        content: `<p>We are thrilled to announce the official launch of the <strong>Get Help Rural-Urban Foundation</strong> website — a major milestone in our journey to build a strong online presence and connect with communities, volunteers, donors, and partners across Nigeria and beyond.</p>
+        <p>This website is our digital home — a place where you can learn about our mission, explore our programmes and projects, meet our team, and find out how you can get involved.</p>
+        <p>We are a foundation built on the belief that every community deserves access to opportunity, support, and the tools to thrive. Our work spans community development, youth employment, skills acquisition, education support, health outreach, and environmental sustainability.</p>
+        <p>We are currently in the process of formal CAC registration, and we look forward to sharing more updates as we grow. Thank you to everyone who has supported us on this journey — from our founding members to the communities who have inspired our work.</p>
+        <p><strong>Welcome to our website. Together, we can build stronger communities.</strong></p>`
+      },
+      'post-cac': {
+        title: 'CAC Registration in Progress',
+        date: '2025',
+        category: 'News',
+        content: `<p><strong>Get Help Rural-Urban Foundation</strong> — formerly known as <strong>LIGHTFORTHELESSPRIVILEGED</strong> — is currently undergoing formal Corporate Affairs Commission (CAC) Incorporated Trustee registration under our new name.</p>
+        <p>This is a significant step forward for our foundation. CAC registration will give us full legal standing as a recognised NGO/Foundation in Nigeria, enabling us to:</p>
+        <ul>
+          <li>Open an official organisational bank account</li>
+          <li>Apply for grants and donor funding</li>
+          <li>Sign formal partnership agreements with government agencies and organisations</li>
+          <li>Receive official recognition from Lagos State ministries</li>
+        </ul>
+        <p>We will publish our CAC registration details — including our registration number and certificate — on this website as soon as the process is complete.</p>
+        <p>Thank you for your patience and continued support.</p>`
+      },
+      'post-journey': {
+        title: 'Our Journey: From Cross River State to Lagos',
+        date: '2020 – Present',
+        category: 'News',
+        content: `<p>Get Help Rural-Urban Foundation began its journey in <strong>2020</strong> under the name <strong>LIGHTFORTHELESSPRIVILEGED</strong> — a grassroots effort driven by a simple but powerful conviction: that vulnerable and underserved communities deserve meaningful support.</p>
+        <p>Over the years, we delivered community outreach, support programmes, and empowerment initiatives primarily across <strong>Cross River State</strong>, reaching families and individuals who needed it most.</p>
+        <p>As our work grew in scope and ambition, we renamed the organisation to <strong>Get Help Rural-Urban Foundation</strong> — a name that more fully reflects our mission of bridging the gap between rural and urban communities through development and empowerment.</p>
+        <p>We have now extended our reach to <strong>Lagos State</strong>, where we are actively building partnerships, engaging government ministries, and laying the groundwork for impactful community programmes.</p>
+        <p>This is just the beginning. We look forward to growing our presence, expanding our programmes, and serving more communities across Nigeria.</p>`
+      }
+    };
+
+    function openPost(postId) {
+      const post = posts[postId];
+      if (!post) return;
+      const html = `<span class="tag">${post.category}</span><h2 style="font-family:'Merriweather',serif;font-size:1.4rem;color:var(--green-dark);margin:12px 0 6px;line-height:1.35;">${post.title}</h2><p style="font-size:0.75rem;color:var(--text-light);margin-bottom:20px;">${post.date}</p><div style="font-size:0.9rem;line-height:1.8;color:var(--text);">${post.content}</div>`;
+      // find the nearest overlay
+      const overlays = document.querySelectorAll('.post-overlay');
+      overlays.forEach(o => {
+        const contentEl = o.querySelector('.post-content');
+        if (contentEl) contentEl.innerHTML = html;
+        o.classList.add('open');
+      });
+    }
+
+    function closePost(e) {
+      if (e && e.target !== e.currentTarget) return;
+      document.querySelectorAll('.post-overlay').forEach(o => o.classList.remove('open'));
+    }
+
+    // Blog post filter
+    function filterPosts(cat, btn) {
+      const tabs = btn.closest('.filter-tabs');
+      tabs.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('#blog-main .blog-card').forEach(card => {
+        if (cat === 'all' || card.dataset.cat === cat) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    // Gallery filter
+    function filterGallery(cat, btn) {
+      document.querySelectorAll('#gallery-grid .filter-btn, .gallery-grid ~ .filter-tabs .filter-btn').forEach(b => b.classList.remove('active'));
+      // find clicked btn's sibling filter-tabs
+      const tabs = btn.closest('.filter-tabs');
+      tabs.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.gal-item').forEach(item => {
+        if (cat === 'all' || item.dataset.cat === cat) {
+          item.classList.remove('hidden');
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+    }
+
+    // Volunteer form
+    function handleVolForm(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.form-submit');
+      btn.textContent = '✓ Application Received!';
+      btn.style.background = '#1a6b3c';
+      btn.disabled = true;
+      e.target.querySelectorAll('input, select, textarea').forEach(el => el.disabled = true);
+    }
+
+    // Contact form
+    function handleContactForm(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.form-submit');
+      btn.textContent = '✓ Message Sent!';
+      btn.style.background = '#1a6b3c';
+      btn.disabled = true;
+      e.target.querySelectorAll('input, textarea').forEach(el => el.disabled = true);
+    }
+
+    // Project filter
+    function filterCards(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.proj-card-detail').forEach(card => {
+        if (cat === 'all' || card.dataset.cat === cat) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    // Newsletter subscribe
+    function handleSubscribe(btn) {
+      const input = btn.previousElementSibling;
+      if (!input.value || !input.value.includes('@')) {
+        input.style.boxShadow = '0 0 0 2px #c0392b';
+        input.placeholder = 'Please enter a valid email';
+        return;
+      }
+      input.style.boxShadow = '';
+      btn.textContent = '✓ Subscribed!';
+      btn.style.background = '#2e8b57';
+      btn.style.color = '#fff';
+      btn.disabled = true;
+      input.disabled = true;
+    }
+
+    // Switch sub-page within a main page
+    function showSection(page, section, btn) {
+      const pageEl = document.getElementById('page-' + page);
+
+      // Hide all sections in this page
+      pageEl.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      // Deactivate all sub buttons in this page
+      pageEl.querySelectorAll('.sub-btn').forEach(b => b.classList.remove('active'));
+
+      // Show selected section
+      document.getElementById(page + '-' + section).classList.add('active');
+
+      // Activate ALL sub-buttons matching this section (both sidebars)
+      pageEl.querySelectorAll('.sub-btn').forEach(b => {
+        if (b.getAttribute('onclick').includes("'" + section + "'")) {
+          b.classList.add('active');
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
