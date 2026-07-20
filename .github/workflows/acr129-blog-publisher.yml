@@ -17,7 +17,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.BLOG_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -28,14 +28,16 @@ jobs:
         run: pip install requests beautifulsoup4 lxml
 
       - name: Search news and publish blog post
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python3 acr129_publisher.py
 
       - name: Commit and push updated website
         run: |
-          git config --global user.email "action@github.com"
+          git config --global user.email "acr129bot@universeway.github.io"
           git config --global user.name "ACR129 Blog Bot"
-          git add docs/index.html
-          git diff --staged --quiet || git commit -m "Blog: ACR129 update $(date +'%Y-%m-%d')"
-          git push
+          git add index.html
+          if git diff --staged --quiet; then
+            echo "No new post added — nothing to commit."
+          else
+            git commit -m "Blog: ACR129 update $(date +'%Y-%m-%d')"
+            git push https://x-access-token:${{ secrets.BLOG_TOKEN }}@github.com/universeway/universeway.github.io.git main
+          fi
