@@ -2501,24 +2501,24 @@
             <!-- Contact Form -->
             <div class="contact-form-wrap">
               <h3 class="contact-sub-h">Send Us a Message</h3>
-              <form class="vol-form" onsubmit="handleContactForm(event)">
+              <form class="vol-form" id="contact-form" onsubmit="handleContactForm(event)">
                 <div class="form-row">
                   <div class="form-group">
                     <label>Full Name *</label>
-                    <input type="text" placeholder="Your full name" required />
+                    <input type="text" name="name" placeholder="Your full name" required />
                   </div>
                   <div class="form-group">
                     <label>Email Address *</label>
-                    <input type="email" placeholder="your@email.com" required />
+                    <input type="email" name="email" placeholder="your@email.com" required />
                   </div>
                 </div>
                 <div class="form-group">
                   <label>Subject *</label>
-                  <input type="text" placeholder="What is your message about?" required />
+                  <input type="text" name="subject" placeholder="What is your message about?" required />
                 </div>
                 <div class="form-group">
                   <label>Message *</label>
-                  <textarea rows="5" placeholder="Write your message here..." required></textarea>
+                  <textarea name="message" rows="5" placeholder="Write your message here..." required></textarea>
                 </div>
                 <button type="submit" class="form-submit">Send Message</button>
               </form>
@@ -2848,14 +2848,35 @@
       e.target.querySelectorAll('input, select, textarea').forEach(el => el.disabled = true);
     }
 
-    // Contact form
-    function handleContactForm(e) {
+    // Contact form — sends via Formspree to support.ru.ngo@gmail.com
+    async function handleContactForm(e) {
       e.preventDefault();
-      const btn = e.target.querySelector('.form-submit');
-      btn.textContent = '✓ Message Sent!';
-      btn.style.background = '#1a6b3c';
+      const form = e.target;
+      const btn = form.querySelector('.form-submit');
+      btn.textContent = 'Sending…';
       btn.disabled = true;
-      e.target.querySelectorAll('input, textarea').forEach(el => el.disabled = true);
+
+      const data = new FormData(form);
+      try {
+        const res = await fetch('https://formspree.io/f/xpzebvqj', {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          btn.textContent = '✓ Message Sent!';
+          btn.style.background = '#1a6b3c';
+          form.querySelectorAll('input, textarea').forEach(el => el.disabled = true);
+        } else {
+          btn.textContent = 'Failed — try emailing us directly';
+          btn.style.background = '#c0392b';
+          btn.disabled = false;
+        }
+      } catch (err) {
+        btn.textContent = 'Error — try emailing us directly';
+        btn.style.background = '#c0392b';
+        btn.disabled = false;
+      }
     }
 
     // Project filter
